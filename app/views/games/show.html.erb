@@ -1,0 +1,23 @@
+<%= stylesheet_link_tag "show" %>
+
+<h1> <%= @game.hidden_word %> </h1>
+
+<% @game.letters_left.each do |letter| %>
+  <%= button_to letter, guesses_create_path(Guess.new), :method => :get, params: {game_id: @game.id, letter: letter}, form: {style: 'display:inline-block;'}, :disabled => @game.game_over %>
+<% end %>
+
+<br>
+<br>
+
+<%= content_tag(:div, "Grade: " + @game.grade_percentage.to_i.to_s, class: "game_text") %>
+
+<%= image_tag @game.grade_letter + ".png", :digest => false %>
+
+<br>
+<br>
+
+<% if @game.game_over %>
+  <%= button_to "Play Again", {:controller => "games", :action => "new"}, :method => :get %>
+
+  <%= button_to "Reveal Word", {:controller => "games", :action => "reveal_word", :game_id => @game.id} %>
+<% end %>

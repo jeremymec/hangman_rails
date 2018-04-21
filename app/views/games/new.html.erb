@@ -1,0 +1,13 @@
+
+<%= form_for Game.new,
+  html: {class: "nifty_form"} do |f| %>
+  <%= f.label :label, "Word: " %>
+  <%= f.text_field :word, placeholder: "Leave blank for random word", :size => "30" %>
+  <br>
+  <br>
+  <%= f.label :label, "Lives: " %>
+  <%= f.select :lives, ((1..99).map {|i| [i, i] } << ["No limit", nil]) %>
+  <br>
+  <br>
+  <%= f.submit "Create Game" %>
+<% end %>
