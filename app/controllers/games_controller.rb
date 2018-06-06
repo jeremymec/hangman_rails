@@ -1,37 +1,30 @@
 class GamesController < ApplicationController
+  def new
 
-def new
-
-end
-
-def create
-  game = Game.create
-
-  if (params[:game][:word].blank?)
-    game.word = game.random_word
-  else
-    game.word = params[:game][:word].downcase
   end
 
-  game.lives = params[:game][:lives]
+  def create
+    game = Game.create(game_params)
 
-  game.hidden = true
+    redirect_to(game)
+  end
 
-  game.save
+  def reveal_word
+    game = Game.find(params[:id])
+    game.hidden = false
+    game.save
 
-  redirect_to(game)
-end
+    redirect_to(game)
+  end
 
-def reveal_word
-  game = Game.find(params[:id])
-  game.hidden = false
-  game.save
+  def show
+    @game = Game.find(params[:id])
+  end
 
-  redirect_to(game)
-end
+  private
 
-def show
-  @game = Game.find(params[:id])
-end
-
-end
+  def game_params
+    params[:game][:word] = params[:game][:word].downcase || game.random_word
+    params[:game][:hidden] = true
+    params
+  end
