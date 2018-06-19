@@ -1,0 +1,66 @@
+
+.navbar-text {
+    text-align: center;
+    color: white !important;
+    font-size: 26px;
+}
+
+.word_field {
+    padding: 200px;
+}
+
+.input {
+    display: block;
+    margin: auto;
+    width: 50%;
+    font-size: 46px;
+    line-height: 1.5;
+    text-transform: lowercase;
+    letter-spacing: 10px;
+    text-align: center;
+}
+
+.slider_container {
+    display:block;
+    margin: auto;
+    width: 40%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: blue;
+    cursor: pointer;
+}
+
+.lives_container {
+    display: block;
+    margin: auto;
+    width: 40%;
+}
+
+.heart_sprite {
+    height: auto; 
+    width: auto; 
+    max-width: 49px; 
+    max-height: 49px;
+}

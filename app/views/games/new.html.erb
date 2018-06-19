@@ -1,13 +1,71 @@
+<%= stylesheet_link_tag "new_game" %>
+
+<nav class="navbar-nav navbar-dark bg-primary">
+  <span class="navbar-text"> Create Game </span>
+</nav>
 
 <%= form_for Game.new,
   html: {class: "nifty_form"} do |f| %>
-  <%= f.label :label, "Word: " %>
-  <%= f.text_field :word, placeholder: "Leave blank for random word", :size => "30" %>
-  <br>
-  <br>
-  <%= f.label :label, "Lives: " %>
-  <%= f.select :lives, ((1..99).map {|i| [i, i] } << ["No limit", nil]) %>
-  <br>
-  <br>
-  <%= f.submit "Create Game" %>
+  <div class="word_field">
+    <%= f.text_field :word, :size => "30", :placeholder => "enter word", :class => "input" %>
+  </div>
+  <div class="slider_container">
+
+    <%= f.range_field :lives, :in => 1..15, :step => 1, :class => "slider", :id => "lives_slider" %>
+
+    <script>
+
+      var lives_array = [];
+
+      var lives_slider = document.getElementById("lives_slider")
+      var lives_max = document.getElementById("lives_slider").max
+
+      var drawHearts = function (){
+
+        console.log(lives_array)
+        for (var j = 0; j < lives_array.length; j++){
+          console.log(lives_array[j])
+          document.getElementById("hearts_container").removeChild(lives_array[j])
+        }
+
+        lives_array = [];
+
+        var lives = document.getElementById("lives_slider").value
+
+        for (var i = 0; i < lives; i++) { 
+          var newHeart = document.createElement("img")
+          newHeart.src = '<%= asset_path("heart.png") %>'
+          newHeart.className = "heart_sprite"
+          document.getElementById("hearts_container").appendChild(newHeart)
+          lives_array = lives_array.concat(newHeart)
+        }
+
+        console.log("Lives: " + lives)
+        console.log("Lives Max: " + lives_max)
+
+        for (var k = 0; k < (lives_max - lives); k++) {
+          console.log("Loop")
+          var newHeart = document.createElement("img")
+          newHeart.src = '<%= asset_path("heart_grey.png") %>'
+          newHeart.className = "heart_sprite"
+          document.getElementById("hearts_container").appendChild(newHeart)
+          lives_array = lives_array.concat(newHeart)
+        }
+      }
+
+      lives_slider.oninput = drawHearts;
+
+      window.onload = drawHearts
+
+    </script>
+    
+  </div>
+
+  <div class = "lives_container" id = "hearts_container">
+    
+  </div>
+
+    <br>
+    <br>
+    <%= f.submit "Create Game" %>
 <% end %>

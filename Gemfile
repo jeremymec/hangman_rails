@@ -21,6 +21,13 @@ gem 'uglifier', '>= 1.3.0'
 
 gem "http"
 
+gem 'bootstrap'
+gem 'jquery-rails'
+
+gem "bootstrap_form",
+    git: "https://github.com/bootstrap-ruby/bootstrap_form.git",
+    branch: "master"
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks

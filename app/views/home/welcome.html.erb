@@ -1,3 +1,13 @@
-<h1>Welcome to hangman on rails!</h1>
+<div class="jumbotron text-center">
+  <h1>Hangman on Rails</h1>
+  <p>A free and open-source online hangman game written in Rails.</p> 
+</div>
 
-<%= button_to "Play!", {:controller => "games", :action => "new"}, :method => :get %>
+<div class = "text-center">
+  <div class="btn-group">
+    <%= button_to "Create Game", {:controller => "games", :action => "new"}, :method => :get, :class => "btn btn-primary" %>
+  </div>
+  <div class="btn-group">
+    <%= button_to "Join Game", {:controller => "games", :action => "new"}, :method => :get, :class => "btn btn-primary" %>
+  </div>
+</div>
