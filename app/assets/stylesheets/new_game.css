@@ -1,12 +1,22 @@
+@font-face  {
+    font-family: 'visitor';
+    src: url('visitor1.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+  }
 
 .navbar-text {
     text-align: center;
+    font-family: visitor;
     color: white !important;
     font-size: 26px;
 }
 
 .word_field {
-    padding: 200px;
+    padding: 10%;
+}
+
+.word_field input {
+    font-family: visitor;
+    min-width: 400px;
 }
 
 .input {
@@ -23,7 +33,7 @@
 .slider_container {
     display:block;
     margin: auto;
-    width: 40%;
+    width: 38.5%;
 }
 
 .slider {
@@ -47,8 +57,7 @@
     appearance: none;
     width: 25px;
     height: 25px;
-    border-radius: 50%;
-    background: blue;
+    background: red;
     cursor: pointer;
 }
 
@@ -63,4 +72,17 @@
     width: auto; 
     max-width: 49px; 
     max-height: 49px;
+}
+
+.button_container {
+    padding: 75px;
+}
+
+.btn.btn-primary {
+    display: block;
+    margin: auto;
+    width: 10%;
+    min-width: fit-content;
+    font-family: visitor;
+    font-size: 20px;
 }

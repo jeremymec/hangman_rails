@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag "new_game" %>
 
 <nav class="navbar-nav navbar-dark bg-primary">
-  <span class="navbar-text"> Create Game </span>
+  <span class="navbar-text"> New Game </span>
 </nav>
 
 <%= form_for Game.new,
@@ -65,7 +65,8 @@
     
   </div>
 
-    <br>
-    <br>
-    <%= f.submit "Create Game" %>
+  <div class = "button_container">
+    <%= f.submit "Create Game", :class => "btn btn-primary" %>
+  </div>
+
 <% end %>
