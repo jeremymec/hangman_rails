@@ -13,14 +13,14 @@ class Game < ApplicationRecord
     return hash["word"]
   end
 
-  def letters_left
+  def letter_left(letter)
     letters_array = ('a'..'z').to_a
 
     self.guesses.each do |guess|
       letters_array.delete(guess.letter)
     end
 
-    return letters_array
+    return letters_array.include? letter
   end
 
   def has_guess(letter)

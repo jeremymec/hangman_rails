@@ -1,4 +1,9 @@
-.game_text {
-  font-family: Arial, Helvetica, sans-serif;
+@font-face  {
+  font-family: 'visitor';
+  src: url('visitor1.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+}
+
+.word {
+  font-family: visitor;
   font-size: 40px;
 }

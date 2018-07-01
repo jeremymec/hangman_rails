@@ -1,15 +1,28 @@
 <%= stylesheet_link_tag "show" %>
 
+<div class = word>
 <h1> <%= @game.hidden_word %> </h1>
+</div>
 
-<% @game.letters_left.each do |letter| %>
-  <%= button_to letter, guesses_create_path(Guess.new), :method => :get, params: {game_id: @game.id, letter: letter}, form: {style: 'display:inline-block;'}, :disabled => @game.game_over %>
+<div class = letter_buttons>
+  <% ('a'..'z').to_a.each do |letter| %>
+    <% if letter == 'j' || letter == 's' %>
+      <%= simple_format("\n") %>
+    <% end %>
+    <% if @game.letter_left(letter) %>
+      <%= button_to letter, guesses_create_path(Guess.new),
+      :method => :get, params: {game_id: @game.id, letter: letter},
+      form: {style: 'display:inline-block;'}, :disabled => @game.game_over, :class => "btn btn-primary" %>
+    <% else %>
+      <%= button_to letter, guesses_create_path(Guess.new),
+      :method => :get, params: {game_id: @game.id, letter: letter},
+      form: {style: 'display:inline-block;'}, :disabled => true, :class => "btn btn-primary", :style => "visibility: hidden;" %>
+    <% end %>
 <% end %>
+</div>
 
 <br>
 <br>
-
-<%= content_tag(:div, "Grade: " + @game.grade_percentage.to_i.to_s, class: "game_text") %>
 
 <%= image_tag @game.grade_letter + ".png", :digest => false %>
 
