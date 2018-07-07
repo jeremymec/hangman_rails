@@ -24,7 +24,7 @@
 <br>
 <br>
 
-<%= image_tag @game.grade_letter + ".png", :digest => false %>
+<%= image_tag "frame" + (15 - @game.guesses_left).to_s + ".png", :digest => false %>
 
 <br>
 <br>
