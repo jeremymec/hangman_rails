@@ -45,37 +45,8 @@ class Game < ApplicationRecord
     return lives
   end
 
-  def grade_percentage
-    (guesses_left.to_f / self[:lives].to_f).to_f * 100
-  end
-
   def game_over
     return guesses_left < 1
-  end
-
-  def grade_letter
-    case grade_percentage
-    when 90..100
-      return "A+"
-    when 80..90
-      return "A"
-    when 70..80
-      return "A-"
-    when 60..70
-      return "B+"
-    when 50..60
-      return "B"
-    when 40..50
-      return "B-"
-    when 30..40
-      return "C+"
-    when 20..30
-      return "C"
-    when 10..20
-      return "C-"
-    when 0..10
-      return "F"
-    end
   end
 
   def hidden_word
