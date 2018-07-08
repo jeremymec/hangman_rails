@@ -3,7 +3,47 @@
   src: url('visitor1.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
 }
 
+.navbar-text {
+  text-align: center;
+  font-family: visitor;
+  color: white !important;
+  font-size: 26px;
+} 
+
+.ui {
+  /* background-color: lightgreen; */
+  display: inline-block;
+  vertical-align:top;
+  padding: 10% 0 0 5%;
+  width: 50%;
+}
+
 .word {
+  /* background-color: lightcoral; */
   font-family: visitor;
   font-size: 40px;
+  display: table;
+  margin: 0 auto;
+}
+
+.letter_buttons {
+  /* background-color: lightgrey; */
+  padding: 15% 0 0 0;
+  display: table;
+  margin: 0 auto;
+}
+
+.btn.btn-primary {
+  margin-right: 5px;
+}
+
+.hangman_image_container {
+  /* background-color: lightblue; */
+  display: inline-block;
+  width: 49%;
+  overflow: hidden;
+}
+
+.hangman_image {
+  float: left;
 }
