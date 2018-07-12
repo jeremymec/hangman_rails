@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :games, only: [:show, :create, :new] do
     member do
       post 'reveal_word'
+      post 'hide_word'
     end
   end
 

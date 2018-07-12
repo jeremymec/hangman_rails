@@ -1,15 +1,20 @@
 <%= stylesheet_link_tag "show" %>
 
-<nav class="navbar-nav navbar-dark bg-primary">
-  <span class="navbar-text"> Hangman </span>
+<nav class="navbar navbar-expand bg-primary navbar-dark">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a href="#" class="nav-link active">Home</a></li>
+      <li><a href="#" class="nav-link active">Create Game</a></li> 
+    </ul>
+  </div>
 </nav>
 
-<div class = ui>
-  <div class = word>
+<div id = ui>
+  <div id = word>
   <%= @game.hidden_word %>
   </div>
 
-  <div class = letter_buttons>
+  <div id = letter_buttons>
     <% ('a'..'z').to_a.each do |letter| %>
       <% if letter == 'j' || letter == 's' %>
         <%= simple_format("\n") %>
@@ -17,7 +22,7 @@
       <% if @game.letter_left(letter) %>
         <%= button_to letter, guesses_create_path(Guess.new),
         :method => :get, params: {game_id: @game.id, letter: letter},
-        form: {style: 'display:inline-block;'}, :disabled => @game.game_over, :class => "btn btn-primary" %>
+        form: {style: 'display:inline-block;'}, :disabled => @game.game_over || @game.game_won, :class => "btn btn-primary" %>
       <% else %>
         <%= button_to letter, guesses_create_path(Guess.new),
         :method => :get, params: {game_id: @game.id, letter: letter},
@@ -27,15 +32,25 @@
   </div>
 </div>
 
-<div class = hangman_image_container>
-  <%= image_tag "frame" + (15 - @game.guesses_left).to_s + ".png", :digest => false, :class => "hangman_image" %>
-</div>
-
-<!--
-<div class = game_buttons>
-  <% if @game.game_over %>
-    <%= button_to "Play Again", {:controller => "games", :action => "new"}, :method => :get %>
-    <%= button_to "Reveal Word", {:controller => "games", :action => "reveal_word", :game_id => @game.id} %>
+<div id = hangman_image_container>
+  <% if @game.game_won %>
+    <%= image_tag "victory.png", :digest => false, :id => "hangman_image" %>
+  <% else %>
+    <%= image_tag "frame" + (15 - @game.guesses_left).to_s + ".png", :digest => false, :id => "hangman_image" %>
   <% end %>
 </div>
--->
+
+<div id = game_buttons>
+  <div class = "btn-group">
+    <% if @game.game_won %>
+      <%= button_to "Play Again", {:controller => "games", :action => "new"}, :method => :get, :class => "btn btn-primary", :id => "play_again_button" %>
+    <% elsif @game.game_over %>
+      <%= button_to "Play Again", {:controller => "games", :action => "new"}, :method => :get, :class => "btn btn-primary", :id => "play_again_button" %>
+      <% if @game.hidden %>
+        <%= button_to "Show  Word", {:controller => "games", :action => "reveal_word", :game_id => @game.id}, :class => "btn btn-success", :id => "reveal_word_button" %>
+      <% else %>
+        <%= button_to "Hide Word", {:controller => "games", :action => "hide_word", :game_id => @game.id}, :class => "btn btn-info", :id => "reveal_word_button" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

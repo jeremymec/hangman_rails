@@ -49,6 +49,15 @@ class Game < ApplicationRecord
     return guesses_left < 1
   end
 
+  def game_won
+    self[:word].chars do |letter|
+      if (!has_guess(letter))
+        return false
+      end
+    end
+    return true
+  end
+
   def hidden_word
     display_string = ""
 
@@ -67,6 +76,10 @@ class Game < ApplicationRecord
     end
 
     return display_string
+  end
+
+  def hidden
+    self[:hidden]
   end
 
 end

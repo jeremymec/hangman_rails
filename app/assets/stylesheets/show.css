@@ -3,47 +3,61 @@
   src: url('visitor1.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
 }
 
-.navbar-text {
-  text-align: center;
+.navbar li{
   font-family: visitor;
-  color: white !important;
-  font-size: 26px;
-} 
+  font-size: 22px;
+  margin: 0px 25px 0px 0px;
+}
 
-.ui {
+#ui {
   /* background-color: lightgreen; */
   display: inline-block;
   vertical-align:top;
-  padding: 10% 0 0 5%;
+  padding: 8% 0 0 5%;
   width: 50%;
 }
 
-.word {
+#word {
   /* background-color: lightcoral; */
   font-family: visitor;
-  font-size: 40px;
+  font-size: 60px;
   display: table;
   margin: 0 auto;
 }
 
-.letter_buttons {
+#letter_buttons {
   /* background-color: lightgrey; */
-  padding: 15% 0 0 0;
+  padding: 10% 0 0 0;
   display: table;
   margin: 0 auto;
+  font-family: visitor;
 }
 
 .btn.btn-primary {
   margin-right: 5px;
 }
 
-.hangman_image_container {
+#hangman_image_container {
   /* background-color: lightblue; */
   display: inline-block;
   width: 49%;
   overflow: hidden;
 }
 
-.hangman_image {
+#hangman_image {
   float: left;
+}
+
+#game_buttons {
+  text-align: center;
+}
+
+#play_again_button {
+  display: inline-block;
+  font-family: visitor;
+}
+
+#reveal_word_button {
+  display: inline-block;
+  font-family: visitor;
 }

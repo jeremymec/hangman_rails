@@ -30,6 +30,14 @@ def reveal_word
   redirect_to(game)
 end
 
+def hide_word
+  game = Game.find(params[:id])
+  game.hidden = true
+  game.save
+
+  redirect_to(game)
+end
+
 def show
   @game = Game.find(params[:id])
 end
