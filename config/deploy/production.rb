@@ -1,10 +1,6 @@
 server '128.199.151.185', user: 'deploy', roles: %w{app db web}
 
-config.assets.precompile << Proc.new { |path|
-    if path =~ /\.(eot|svg|ttf|woff)\z/
-      true
-    end
-  }
+config.assets.compile = true
 
 # server-based syntax
 # ======================

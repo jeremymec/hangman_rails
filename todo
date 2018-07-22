@@ -1,0 +1,15 @@
+Todo / Bug Fix List for Hangman
+-------------------------------------
+
+
+- Create and Join game buttons both there. Need to decide what to do with them
+
+- Hearts don't scale with window size
+
+- No indication that word is chosen randomly
+
+- Header doesn't work
+
+- Add feature - enter letters with your keyboard
+
+- Add an about page
