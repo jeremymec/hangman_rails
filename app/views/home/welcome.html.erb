@@ -1,13 +1,10 @@
 <div class="jumbotron text-center">
   <h1>Hangman on Rails</h1>
-  <p>A free and open-source online hangman game written in Rails.</p> 
+  <p>A free and open-source online hangman game written in Ruby.</p> 
 </div>
 
 <div class = "text-center">
   <div class="btn-group">
-    <%= button_to "Create Game", {:controller => "games", :action => "new"}, :method => :get, :class => "btn btn-primary" %>
-  </div>
-  <div class="btn-group">
-    <%= button_to "Join Game", {:controller => "games", :action => "new"}, :method => :get, :class => "btn btn-primary" %>
+    <%= button_to "New Game", {:controller => "games", :action => "new"}, :method => :get, :class => "btn btn-primary" %>
   </div>
 </div>

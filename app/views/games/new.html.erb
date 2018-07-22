@@ -1,14 +1,25 @@
 <%= stylesheet_link_tag "new_game" %>
 
-<nav class="navbar-nav navbar-dark bg-primary">
-  <span class="navbar-text"> New Game </span>
+<nav class="navbar navbar-expand bg-primary navbar-dark">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><%= link_to "Home", {:controller => "home", :action => "welcome"}, :method => :get, :class => "nav-link active" %></li>
+      <li><%= link_to "New Game", {:controller => "games", :action => "new"}, :method => :get, :class => "nav-link active" %></li>
+    </ul>
+  </div>
 </nav>
 
 <%= form_for Game.new,
   html: {class: "nifty_form"} do |f| %>
+
   <div class="word_field">
     <%= f.text_field :word, :size => "30", :placeholder => "enter word", :class => "input" %>
   </div>
+
+  <div class="input_text_container">
+    Leave blank to play with a randomly selected word
+  </div>
+
   <div class="slider_container">
 
     <%= f.range_field :lives, :in => 1..15, :step => 1, :class => "slider", :id => "lives_slider" %>

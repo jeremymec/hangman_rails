@@ -3,8 +3,8 @@
 <nav class="navbar navbar-expand bg-primary navbar-dark">
   <div class="container-fluid">
     <ul class="nav navbar-nav">
-      <li><a href="#" class="nav-link active">Home</a></li>
-      <li><a href="#" class="nav-link active">Create Game</a></li> 
+      <li><%= link_to "Home", {:controller => "home", :action => "welcome"}, :method => :get, :class => "nav-link active" %></li>
+      <li><%= link_to "Create Game", {:controller => "games", :action => "new"}, :method => :get, :class => "nav-link active" %></li>
     </ul>
   </div>
 </nav>
