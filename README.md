@@ -1,24 +1,7 @@
-# README
+# Hangman on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+If you want to play the live version of this game, vist [hamgmanonrails.com](http://hangmanonrails.com/).
 
-Things you may want to cover:
+# Motivation
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The motivation for this project was twofold. The majority of my programming experience up to now has been in 
