@@ -9,6 +9,8 @@ The second reason I undertook this project was more spontaneous - I was trying t
 I decided to take this opptunity to tackle learning ruby on rails with an achievable goal in mind that might prove useful to some people in the future.
 
 
-# Design Process
+# Features
 
-I chose to split the design of the app into two stages - the base ruby
+In its current iteration, this is a barebones version of hangman. The available features are as follows.
+
+ * Creating a dedicated game lobby which can be shared 
