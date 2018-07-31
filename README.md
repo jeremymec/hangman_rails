@@ -1,14 +1,11 @@
 # Hangman on Rails
 
-
 If you want to play the live version of this game, visit [hamgmanonrails.com](http://hangmanonrails.com/).
 
 
 # Features
 
-
 In its current iteration, this is a barebones version of hangman. The available features are as follows.
-
 
 * Creating a dedicated game lobby which can be shared with a friend through a persistent link
 
@@ -18,11 +15,8 @@ In its current iteration, this is a barebones version of hangman. The available 
 
 * Switch between showing / hiding the word upon losing a game
 
-
 This is a solid base for a functional hangman game, but it is something I feel I can expand upon.
-
 These are the features I would like to add in the near future.
-
 
 * Account system, which can be used to track past games and challenge friends
 
@@ -31,9 +25,7 @@ These are the features I would like to add in the near future.
 * Expand the gameplay to include more complex game modes
 
 
-
 # Motivation
-
 
 The motivation for this project was twofold. The majority of my programming experience up to now has been working with desktop applications, game development, and algorithms, mostly through various university assignments. I've been interested in rails development since attending an industry talk on it in 2017 - the streamlined way you can create and deploy apps entirely self-contained to rails was extremely appealing to me.
 
@@ -42,9 +34,7 @@ The second reason I undertook this project was more spontaneous - I was trying t
 I decided to take this opportunity to tackle learning ruby on rails with an achievable goal in mind that might prove useful to some people in the future.
 
 
-
 # Deployment
-
 
 The biggest challenge I encountered undertaking this project was deployment, as it was the aspect I had the least experience in. I used a fairly complex but extremely scalable stack, mirroring the way a more industrial application would be deployed.
 
