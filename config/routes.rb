@@ -3,12 +3,19 @@ Rails.application.routes.draw do
 
   root :to => "home#welcome"
 
-  resources :games, only: [:show, :create, :new] do
+  resources :games, param: :slug, only: [:show, :create, :new] do
     member do
       post 'reveal_word'
       post 'hide_word'
     end
   end
+
+  # resources :games, only: [:show, :create, :new] do
+  #   member do
+  #     post 'reveal_word'
+  #     post 'hide_word'
+  #   end
+  # end
 
   resources :guesses, only: [:create]
 

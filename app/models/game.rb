@@ -1,7 +1,15 @@
+require 'securerandom'
+
 class Game < ApplicationRecord
   has_many :guesses
 
+  before_create :set_slug
+
   @@wordnik_apikey = "3024754e412d1ecdfb3310b288107465e759f947a2fd612d6"
+
+  def to_param
+    slug
+  end
 
   def word_count
     self[:word].length
@@ -80,6 +88,15 @@ class Game < ApplicationRecord
 
   def hidden
     self[:hidden]
+  end
+
+  private
+
+  def set_slug
+    loop do
+      self.slug = SecureRandom.urlsafe_base64(4)
+      break unless Game.where(slug: slug).exists?
+    end
   end
 
 end
