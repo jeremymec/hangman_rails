@@ -1,7 +1,7 @@
 # Hangman on Rails
 
 
-If you want to play the live version of this game, vist [hamgmanonrails.com](http://hangmanonrails.com/).
+If you want to play the live version of this game, visit [hamgmanonrails.com](http://hangmanonrails.com/).
 
 
 # Features
