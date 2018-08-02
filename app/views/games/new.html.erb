@@ -20,6 +20,12 @@
     Leave blank to play with a randomly selected word
   </div>
 
+  <div class="difficulty_buttons_container">
+    <button type="button" class="btn btn-outline-success difficulty">Easy</button>
+    <button type="button" class="btn btn-outline-warning difficulty">Medium</button>
+    <button type="button" class="btn btn-outline-danger difficulty">Hard</button>
+  </div>
+
   <div class="slider_container">
 
     <%= f.range_field :lives, :in => 1..15, :step => 1, :class => "slider", :id => "lives_slider" %>
