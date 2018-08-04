@@ -15,8 +15,20 @@ class Game < ApplicationRecord
     self[:word].length
   end
 
-  def random_word
-    api_data = HTTP.get("http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&minCorpusCount=0&maxCorpusCount=-1&minDictionaryCount=20&maxDictionaryCount=-1&minLength=5&maxLength=15&api_key=" + @@wordnik_apikey)
+  def random_word(difficulty)
+    case difficulty
+    when "easy"
+      minCorpusCount = "5000000"
+      maxLength = "6"
+    when "medium"
+      minCorpusCount = "100000"
+      maxLength = "10"
+    when "hard"
+      minCorpusCount = "500"
+      maxLength = "-1"     
+    end
+
+    api_data = HTTP.get("http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&minCorpusCount=" + minCorpusCount + "&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=3&maxLength=" + maxLength + "&api_key=" + @@wordnik_apikey)
     hash = JSON.parse api_data
     return hash["word"]
   end

@@ -3,15 +3,17 @@ class GamesController < ApplicationController
   def create
     game = Game.create
 
-    if (params[:game][:word].blank?)
-      game.word = game.random_word
-    else
-      game.word = params[:game][:word].downcase
-    end
-
     game.lives = params[:game][:lives]
 
     game.hidden = true
+
+    game.difficulty = params[:game][:difficulty]
+
+    if (params[:game][:word].blank?)
+      game.word = game.random_word(game.difficulty)
+    else
+      game.word = params[:game][:word].downcase
+    end
 
     game.save
 

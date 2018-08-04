@@ -38,7 +38,7 @@
     color: grey;
 }
 
-.difficulty_buttons_container {
+.difficulty_container {
     padding: 0.5% 0% 2% 0%;
     display: block;
     margin: auto;
@@ -46,7 +46,8 @@
 }
 
 .btn.difficulty {
-    margin-left: 15px;
+    margin: 10px;
+    border-radius: 0px;
 }
 
 .slider_container {

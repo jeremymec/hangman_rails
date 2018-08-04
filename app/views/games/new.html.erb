@@ -20,11 +20,18 @@
     Leave blank to play with a randomly selected word
   </div>
 
-  <div class="difficulty_buttons_container">
-    <button type="button" class="btn btn-outline-success difficulty">Easy</button>
-    <button type="button" class="btn btn-outline-warning difficulty">Medium</button>
-    <button type="button" class="btn btn-outline-danger difficulty">Hard</button>
+  <div class="btn-group btn-group-toggle difficulty_container" data-toggle="buttons">
+    <label class="btn btn-outline-success difficulty">
+      <%= f.radio_button :difficulty, 'easy', :checked => false %> Easy
+    </label>
+    <label class="btn btn-outline-warning difficulty active">
+      <%= f.radio_button :difficulty, 'medium', :checked => true %> Medium
+    </label>
+    <label class="btn btn-outline-danger difficulty">   
+      <%= f.radio_button :difficulty, 'hard', :checked => false %> Hard
+    </label>
   </div>
+
 
   <div class="slider_container">
 
