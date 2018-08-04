@@ -20,7 +20,7 @@ These are the features I would like to add in the near future.
 
 * Account system, which can be used to track past games and challenge friends
 
-* <s>Ability to select difficulty of the randomly selected word</s> Feature added
+* <s>Ability to select difficulty of the randomly selected word</s> ✓
 
 * Expand the gameplay to include more complex game modes
 
