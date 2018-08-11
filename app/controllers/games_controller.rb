@@ -1,22 +1,7 @@
 class GamesController < ApplicationController
 
   def create
-    game = Game.create
-
-    game.lives = params[:game][:lives]
-
-    game.hidden = true
-
-    game.difficulty = params[:game][:difficulty]
-
-    if (params[:game][:word].blank?)
-      game.word = game.random_word(game.difficulty)
-    else
-      game.word = params[:game][:word].downcase
-    end
-
-    game.save
-
+    game = Game.create(game_params)
     redirect_to(game)
   end
 
@@ -39,5 +24,16 @@ class GamesController < ApplicationController
   def show
     @game = Game.find_by slug: params[:slug]
   end
+
+  private
+
+  def game_params
+    params[:game][:word] = params[:game][:word]&.downcase.presence || Game.random_word(params[:game][:difficulty])
+    params[:game][:hidden] = true
+    params[:game]
+    params.require(:game).permit(:word, :hidden, :difficulty, :lives)
+  end
   
 end
+
+

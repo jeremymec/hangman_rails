@@ -15,7 +15,7 @@ class Game < ApplicationRecord
     self[:word].length
   end
 
-  def random_word(difficulty)
+  def self.random_word(difficulty)
     case difficulty
     when "easy"
       minCorpusCount = "5000000"
@@ -25,7 +25,7 @@ class Game < ApplicationRecord
       maxLength = "10"
     when "hard"
       minCorpusCount = "500"
-      maxLength = "-1"     
+      maxLength = "12"     
     end
 
     api_data = HTTP.get("http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&minCorpusCount=" + minCorpusCount + "&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=3&maxLength=" + maxLength + "&api_key=" + @@wordnik_apikey)
