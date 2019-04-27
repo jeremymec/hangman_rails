@@ -28,7 +28,7 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params[:game][:word] = params[:game][:word]&.downcase.presence || Game.random_word(params[:game][:difficulty])
+    params[:game][:word] = params[:game][:word]&.presence || Game.random_word(params[:game][:difficulty])
     params[:game][:hidden] = true
     params[:game]
     params.require(:game).permit(:word, :hidden, :difficulty, :lives)

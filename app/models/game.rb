@@ -30,7 +30,7 @@ class Game < ApplicationRecord
 
     api_data = HTTP.get("http://api.wordnik.com:80/v4/words.json/randomWord?hasDictionaryDef=true&minCorpusCount=" + minCorpusCount + "&maxCorpusCount=-1&minDictionaryCount=1&maxDictionaryCount=-1&minLength=3&maxLength=" + maxLength + "&api_key=" + @@wordnik_apikey)
     hash = JSON.parse api_data
-    return hash["word"]
+    return hash["word"].downcase
   end
 
   def letter_left(letter)
