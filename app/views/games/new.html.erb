@@ -1,10 +1,23 @@
 <%= stylesheet_link_tag "new_game" %>
 
+<script>
+  fadeOutAlert()
+</script>
+
 <nav class="navbar navbar-expand bg-primary navbar-dark">
   <div class="container-fluid">
     <ul class="nav navbar-nav">
       <li><%= link_to "Home", {:controller => "home", :action => "welcome"}, :method => :get, :class => "nav-link active" %></li>
       <li><%= link_to "New Game", {:controller => "games", :action => "new"}, :method => :get, :class => "nav-link active" %></li>
+    </ul>
+    <ul class="nav navbar-nav"
+      <% if user_signed_in? %>
+          <li><%= link_to current_user.email, edit_user_registration_path, :class => "nav-link active" %> </li>
+          <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => "nav-link active" %> </li>
+        <% else %>
+          <%= link_to "Sign up", new_user_registration_path, :class => 'nav-link active'  %>
+          <%= link_to "Login", new_user_session_path, :class => 'nav-link active'  %>
+        <% end %>
     </ul>
   </div>
 </nav>
@@ -92,5 +105,6 @@
   <div class = "button_container">
     <%= f.submit "Create Game", :class => "btn btn-primary" %>
   </div>
+
 
 <% end %>
