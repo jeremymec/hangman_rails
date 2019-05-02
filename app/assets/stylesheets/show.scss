@@ -48,7 +48,7 @@
   float: left;
 }
 
-#game_buttons {
+.game_buttons {
   text-align: center;
 }
 
@@ -63,6 +63,9 @@
 }
 
 #reveal_word_button {
-  display: inline-block;
   font-family: visitor;
+}
+
+.game_buttons.g2 {
+  margin-top: .5%;
 }

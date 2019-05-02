@@ -9,6 +9,8 @@
   </div>
 </nav>
 
+<h1> <%= @game.tempScore %> </h1>
+
 <div id = ui>
   <div id = word>
   <%= @game.hidden_word %>
@@ -40,19 +42,31 @@
   <% end %>
 </div>
 
-<div id = game_buttons>
-  <div class = "btn-group">
+<div class = "game_buttons g1">
+  <div class = btn-group>
     <% if @game.game_won %>
-      <%= button_to "Play Again", {:controller => "games", :action => "new"}, :method => :get, :class => "btn btn-primary", :id => "play_again_button" %>
-      <%= button_to "New Game", {:controller => "games", :action => "new"}, :method => :get, :class => "btn btn-primary", :id => "new_game_button" %>
+      <%= button_to "Play Again",
+       games_path(:game => { :word => "", :hidden => @game.hidden, :difficulty => @game.difficulty, :lives => @game.lives }),
+       :class => "btn btn-primary", :id => "new_game_button" %>
+      <%= button_to "New Game",
+       {:controller => "games", :action => "new"}, :method => :get, :class => "btn btn-primary", :id => "new_game_button" %>
     <% elsif @game.game_over %>
-      <%= button_to "Play Again", {:controller => "games", :action => "new"}, :method => :get, :class => "btn btn-primary", :id => "play_again_button" %>
+    <%= button_to "Play Again",
+     games_path(:game => { :word => "", :hidden => @game.hidden, :difficulty => @game.difficulty, :lives => @game.lives }),
+     :class => "btn btn-primary", :id => "new_game_button" %>
       <%= button_to "New Game", {:controller => "games", :action => "new"}, :method => :get, :class => "btn btn-primary", :id => "new_game_button" %>
-      <% if @game.hidden %>
-        <%= button_to "Show  Word", {:controller => "games", :action => "reveal_word", :game_id => @game.id}, :class => "btn btn-success", :id => "reveal_word_button" %>
-      <% else %>
-        <%= button_to "Hide Word", {:controller => "games", :action => "hide_word", :game_id => @game.id}, :class => "btn btn-info", :id => "reveal_word_button" %>
-      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class = "game_buttons g2">
+  <div class = btn-group>
+    <% if @game.game_over %>
+    <% if @game.hidden %>
+      <%= button_to "Show  Word", {:controller => "games", :action => "reveal_word", :game_id => @game.id}, :class => "btn btn-success", :id => "reveal_word_button" %>
+    <% else %>
+      <%= button_to "Hide Word", {:controller => "games", :action => "hide_word", :game_id => @game.id}, :class => "btn btn-info", :id => "reveal_word_button" %>
+    <% end %>
     <% end %>
   </div>
 </div>

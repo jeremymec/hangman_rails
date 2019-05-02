@@ -7,6 +7,26 @@ class Game < ApplicationRecord
 
   @@wordnik_apikey = "3024754e412d1ecdfb3310b288107465e759f947a2fd612d6"
 
+  def tempScore
+    score = 0
+
+    letterValue = 0
+    case difficulty
+    when "easy"
+      letterValue = 30
+    when "medium"
+      letterValue = 40
+    when "hard"
+      letterValue = 50
+    end
+
+    if (game_won)
+      score += lifeBonus = 300 - 20 * (lives)
+    end
+
+    score += (correct_guesses) * letterValue
+  end
+
   def to_param
     slug
   end
@@ -50,6 +70,16 @@ class Game < ApplicationRecord
       end
     end
     return false
+  end
+
+  def correct_guesses
+    number = 0
+    self.guesses.each do |guess|
+      if (guess.is_correct(self.word))
+        number = number + 1
+      end
+    end
+    return number
   end
 
   def guesses_left
