@@ -27,6 +27,10 @@ class Game < ApplicationRecord
     score += (correct_guesses) * letterValue
   end
 
+  def last_guess_correct
+    self.guesses.last.is_correct(self.word)
+  end
+
   def to_param
     slug
   end

@@ -9,11 +9,41 @@
   margin: 0px 25px 0px 0px;
 }
 
+
+#score {
+  text-align: center;
+  font-family: visitor;
+  font-size: 60px;
+  width: 100%;
+}
+
+
+#score_value {
+
+  display: inline-block;
+
+  animation: example1 .5s ease;
+  }
+  @keyframes example1 {
+  0%   { 
+    opacity: 0;
+    transform: translateY(200%); 		
+  }
+  80% { 
+    opacity: .7;
+  }
+  100% { 
+    opacity: 1;
+    transform: translateY(0%); 
+  }
+
+}
+
 #ui {
   /* background-color: lightgreen; */
   display: inline-block;
   vertical-align:top;
-  padding: 8% 0 0 5%;
+  padding: 5% 0 0 5%;
   width: 50%;
 }
 
@@ -46,6 +76,7 @@
 
 #hangman_image {
   float: left;
+  max-width: 80%;
 }
 
 .game_buttons {
@@ -67,5 +98,5 @@
 }
 
 .game_buttons.g2 {
-  margin-top: .5%;
+  margin-top: .3%;
 }

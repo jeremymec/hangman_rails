@@ -1,5 +1,11 @@
 <%= stylesheet_link_tag "show" %>
 
+<script>
+  var myvar = <%= @game.last_guess_correct %>
+  console.log(myvar)
+</script>
+
+
 <nav class="navbar navbar-expand bg-primary navbar-dark">
   <div class="container-fluid">
     <ul class="nav navbar-nav">
@@ -9,7 +15,9 @@
   </div>
 </nav>
 
-<h1> <%= @game.tempScore %> </h1>
+<div id = score>
+  SCORE: <div id = score_value> <%= @game.tempScore %> </div>
+</div>
 
 <div id = ui>
   <div id = word>
