@@ -28,7 +28,11 @@ class Game < ApplicationRecord
   end
 
   def last_guess_correct
-    self.guesses.last.is_correct(self.word)
+    if (self.guesses.last).nil?
+      false
+    else
+      self.guesses.last.is_correct(self.word)
+    end
   end
 
   def to_param

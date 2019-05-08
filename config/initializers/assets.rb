@@ -15,4 +15,5 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 Rails.application.config.assets.precompile += %w( show.css )
 Rails.application.config.assets.precompile += %w( new_game.css )
+Rails.application.config.assets.precompile += %w( register_user.css )
 Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|woff2|ttf)\z/

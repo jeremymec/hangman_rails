@@ -10,7 +10,7 @@
 }
 
 
-#score {
+.score {
   text-align: center;
   font-family: visitor;
   font-size: 60px;
@@ -19,8 +19,11 @@
 
 
 #score_value {
-
   display: inline-block;
+
+}
+
+#score_value.animation {
 
   animation: example1 .5s ease;
   }

@@ -1,8 +1,19 @@
 <%= stylesheet_link_tag "show" %>
 
 <script>
-  var myvar = <%= @game.last_guess_correct %>
-  console.log(myvar)
+  $(document).ready(function() { 
+
+    var myvar = <%= @game.last_guess_correct %>
+
+    if (myvar){
+      var d = document.getElementById("score_value");
+      console.log(d);
+      d.classList.add("animation");
+      console.log(d.classList);
+    }
+  
+  });
+
 </script>
 
 
@@ -15,8 +26,8 @@
   </div>
 </nav>
 
-<div id = score>
-  SCORE: <div id = score_value> <%= @game.tempScore %> </div>
+<div class = score>
+  SCORE: <div id = "score_value"> <%= @game.tempScore %> </div>
 </div>
 
 <div id = ui>
