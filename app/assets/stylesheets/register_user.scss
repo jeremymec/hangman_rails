@@ -1,0 +1,17 @@
+@font-face  {
+    font-family: 'visitor';
+    src: font-url('visitor1.ttf') format('truetype');  /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+  }
+
+  .navbar li{
+    font-family: visitor;
+    font-size: 21px;
+    margin: 0px 25px 0px 0px;
+  }
+
+  .signup-form{
+    color: #636363;
+    margin: 0 0 15px;
+    position: relative;
+    text-align: center;
+}
