@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag "new_game" %>
 
 <script>
-  fadeOutAlert()
+    fadeOutAlert()
 </script>
 
 <nav class="navbar navbar-expand bg-primary navbar-dark">
@@ -12,99 +12,119 @@
     </ul>
     <ul class="nav navbar-nav">
       <% if user_signed_in? %>
-          <li> <%= link_to current_user.email, edit_user_registration_path, :class => "nav-link active" %> </li>
-          <li> <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => "nav-link active" %> </li>
-        <% else %>
-          <li> <%= link_to "Sign Up", new_user_registration_path, :class => "nav-link active"  %> </li>
-          <li> <%= link_to "Login", new_user_session_path, :class => "nav-link active"  %> </li>
-        <% end %>
+        <li> <%= link_to current_user.email, edit_user_registration_path, :class => "nav-link active" %> </li>
+        <li> <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => "nav-link active" %> </li>
+      <% else %>
+        <li> <%= link_to "Sign Up", new_user_registration_path, :class => "nav-link active" %> </li>
+        <li> <%= link_to "Login", new_user_session_path, :class => "nav-link active" %> </li>
+      <% end %>
     </ul>
   </div>
 </nav>
 
-<%= form_for Game.new,
-  html: {class: "nifty_form"} do |f| %>
 
-  <div class="word_field">
-    <%= f.text_field :word, :size => "30", :placeholder => "enter word", :class => "input" %>
-  </div>
+<div class="container">
+  <%= form_for Game.new,
+               html: {class: "nifty_form"} do |f| %>
 
-  <div class="input_text_container">
-    Leave blank to play with a randomly selected word
-  </div>
+    <div class="row">
+      <div class="col-sm">
+        <div class="word_field">
+          <%= f.text_field :word, :size => "30", :placeholder => "enter word", :class => "input" %>
+        </div>
+      </div>
+    </div>
 
-  <div class="btn-group btn-group-toggle difficulty_container" data-toggle="buttons">
-    <label class="btn btn-outline-success difficulty">
-      <%= f.radio_button :difficulty, 'easy', :checked => false %> Easy
-    </label>
-    <label class="btn btn-outline-warning difficulty active">
-      <%= f.radio_button :difficulty, 'medium', :checked => true %> Medium
-    </label>
-    <label class="btn btn-outline-danger difficulty">   
-      <%= f.radio_button :difficulty, 'hard', :checked => false %> Hard
-    </label>
-  </div>
+    <div class="row">
+      <div class="col-sm">
+        <div class="input_text_container">
+          Leave blank to play with a randomly selected word
+        </div>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="col-sm">
+        <div class="btn-group btn-group-toggle difficulty_container" data-toggle="buttons">
+          <label class="btn btn-outline-success difficulty">
+            <%= f.radio_button :difficulty, 'easy', :checked => false %> Easy
+          </label>
+          <label class="btn btn-outline-warning difficulty active">
+            <%= f.radio_button :difficulty, 'medium', :checked => true %> Medium
+          </label>
+          <label class="btn btn-outline-danger difficulty">
+            <%= f.radio_button :difficulty, 'hard', :checked => false %> Hard
+          </label>
+        </div>
+      </div>
+    </div>
 
-  <div class="slider_container">
+    <div class="row">
+      <div class="col-sm">
+        <div class="slider_container">
+          <%= f.range_field :lives, :in => 1..15, :step => 1, :class => "slider", :id => "lives_slider" %>
+          <script>
 
-    <%= f.range_field :lives, :in => 1..15, :step => 1, :class => "slider", :id => "lives_slider" %>
+              var lives_array = [];
 
-    <script>
+              var lives_slider = document.getElementById("lives_slider")
+              var lives_max = document.getElementById("lives_slider").max
 
-      var lives_array = [];
+              var drawHearts = function () {
 
-      var lives_slider = document.getElementById("lives_slider")
-      var lives_max = document.getElementById("lives_slider").max
+                  console.log(lives_array)
+                  for (var j = 0; j < lives_array.length; j++) {
+                      console.log(lives_array[j])
+                      document.getElementById("hearts_container").removeChild(lives_array[j])
+                  }
 
-      var drawHearts = function (){
+                  lives_array = [];
 
-        console.log(lives_array)
-        for (var j = 0; j < lives_array.length; j++){
-          console.log(lives_array[j])
-          document.getElementById("hearts_container").removeChild(lives_array[j])
-        }
+                  var lives = document.getElementById("lives_slider").value
 
-        lives_array = [];
+                  for (var i = 0; i < lives; i++) {
+                      var newHeart = document.createElement("img")
+                      newHeart.src = '<%= asset_path("heart.png") %>'
+                      newHeart.className = "heart_sprite"
+                      document.getElementById("hearts_container").appendChild(newHeart)
+                      lives_array = lives_array.concat(newHeart)
+                  }
 
-        var lives = document.getElementById("lives_slider").value
+                  console.log("Lives: " + lives)
+                  console.log("Lives Max: " + lives_max)
 
-        for (var i = 0; i < lives; i++) { 
-          var newHeart = document.createElement("img")
-          newHeart.src = '<%= asset_path("heart.png") %>'
-          newHeart.className = "heart_sprite"
-          document.getElementById("hearts_container").appendChild(newHeart)
-          lives_array = lives_array.concat(newHeart)
-        }
+                  for (var k = 0; k < (lives_max - lives); k++) {
+                      console.log("Loop")
+                      var newHeart = document.createElement("img")
+                      newHeart.src = '<%= asset_path("heart_grey.png") %>'
+                      newHeart.className = "heart_sprite"
+                      document.getElementById("hearts_container").appendChild(newHeart)
+                      lives_array = lives_array.concat(newHeart)
+                  }
+              }
 
-        console.log("Lives: " + lives)
-        console.log("Lives Max: " + lives_max)
+              lives_slider.oninput = drawHearts;
 
-        for (var k = 0; k < (lives_max - lives); k++) {
-          console.log("Loop")
-          var newHeart = document.createElement("img")
-          newHeart.src = '<%= asset_path("heart_grey.png") %>'
-          newHeart.className = "heart_sprite"
-          document.getElementById("hearts_container").appendChild(newHeart)
-          lives_array = lives_array.concat(newHeart)
-        }
-      }
+              window.onload = drawHearts
+          </script>
+        </div>
+      </div>
+    </div>
 
-      lives_slider.oninput = drawHearts;
+    <div class="row">
+      <div class="col-sm">
+        <div class="lives_container" id="hearts_container">
 
-      window.onload = drawHearts
+        </div>
+      </div>
+    </div>
 
-    </script>
-    
-  </div>
-
-  <div class = "lives_container" id = "hearts_container">
-    
-  </div>
-
-  <div class = "button_container">
-    <%= f.submit "Create Game", :class => "btn btn-primary" %>
-  </div>
-
-
-<% end %>
+    <div class="row">
+      <div class="col-sm">
+        <div class="button_container">
+          <%= f.submit "Create Game", :class => "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
